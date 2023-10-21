@@ -92,8 +92,27 @@ class gegevensController extends Controller
         $instructeurId = $instructeur->Id;
         $voertuigId = $row;
 
-        DB::table('voertuig_instructeurs')->where('VoertuigId', $row)->delete();
+        DB::table('voertuig_instructeurs')->where('VoertuigId', $voertuigId)->delete();
 
         return redirect(route('instructeur.list', [$instructeurId]))->with('succes', 'Het door u geselecteerde voertuig is verwijderd');
+    }
+
+    public function allPage(Instructeur $instructeur)
+    {
+        $voertuigData = Voertuig::AllPageGegevens()->get();
+        $voertuigInstructeurData = VoertuigInstructeur::AllPageGegevens()->get();
+        // dd($voertuigInstructeurData);
+        return view('instructeur.allPage', ['instructeurs' => $instructeur], compact('voertuigInstructeurData', 'voertuigData'));
+    }
+
+    public function deleteAllPage(Instructeur $instructeur, $row)
+    {
+        $instructeurId = $instructeur->Id;
+        $voertuigId = $row;
+
+        DB::table('voertuig_instructeurs')->where('VoertuigId', $voertuigId)->delete();
+        DB::table('voertuigs')->where('Id', $voertuigId)->delete();
+
+        return redirect(route('instructeur.allPage', [$instructeurId]))->with('succes', 'Het door u geselecteerde voertuig is verwijderd');
     }
 }
