@@ -23,4 +23,15 @@ class VoertuigInstructeur extends Model
             ->join('type_voertuigs', 'voertuigs.TypeVoertuigId', '=', 'type_voertuigs.Id')
             ->get();
     }
+
+    public function scopeAllPageGegevens(Builder $information): void
+    {
+        $information
+            ->select('voertuigs.Id', 'Kenteken', 'Type', 'Bouwjaar', 'Brandstof', 'Achternaam', 'TypeVoertuig', 'Rijbewijscategorie')
+            ->join('voertuigs', 'voertuig_instructeurs.VoertuigId', '=', 'voertuigs.Id')
+            ->join('instructeurs', 'voertuig_instructeurs.InstructeurId', '=', 'instructeurs.Id')
+            ->join('type_voertuigs', 'voertuigs.TypeVoertuigId', '=', 'type_voertuigs.Id')
+            ->orderBy('instructeurs.Achternaam', 'desc')
+            ->get();
+    }
 }
