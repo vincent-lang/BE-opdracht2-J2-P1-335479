@@ -10,9 +10,6 @@
 
 <body>
     <h3>Alle beschikbare voertuigen</h3>
-    <h3>Naam: {{$instructeurs->Voornaam}} {{$instructeurs->Tussenvoegsel}} {{$instructeurs->Achternaam}}</h3>
-    <h3>Datum in dienst: {{$instructeurs->DatumInDienst}}</h3>
-    <h3>Aantal sterren: {{$instructeurs->AantalSterren}}</h3>
     <table>
         <thead>
             <th>Type voertuig</th>
