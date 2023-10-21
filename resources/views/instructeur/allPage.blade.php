@@ -24,7 +24,10 @@
         </script>
         @endif
     </div>
-
+    @if($voertuigData->isEmpty() && $voertuigInstructeurData->isEmpty())
+    <h3 class="succes-text">
+        Er zijn geen voertuigen beschikbaar op dit moment.
+    </h3>
     <table>
         <thead>
             <th>Type voertuig</th>
