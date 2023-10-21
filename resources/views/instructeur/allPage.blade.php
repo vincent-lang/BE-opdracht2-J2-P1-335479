@@ -28,6 +28,12 @@
     <h3 class="succes-text">
         Er zijn geen voertuigen beschikbaar op dit moment.
     </h3>
+    <script>
+        setTimeout(function() {
+            window.location.href = "{{route('instructeur.index')}}"
+        }, 3000);
+    </script>
+    @else
     <table>
         <thead>
             <th>Type voertuig</th>
