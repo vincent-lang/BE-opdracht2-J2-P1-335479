@@ -16,6 +16,9 @@
     <h3>
         <a href="{{route('instructeur.addPage', [$instructeurs[0]->Id])}}">Toevoegen voertuig</a>
     </h3>
+    <h3>
+        <a href="{{route('instructeur.allPage', [$instructeurs[0]->Id])}}">alle voertuigen</a>
+    </h3>
     <div>
         @if(session()->has('succes'))
         <div>
@@ -31,7 +34,9 @@
         @endif
     </div>
     @if($voertuigData->isEmpty())
-    <h3>Geen voertuigen toegewezen.</h3>
+    <h3>
+        Geen voertuigen toegewezen.
+    </h3>
     <script>
         setTimeout(function() {
             window.location.href = "{{route('instructeur.index')}}"
