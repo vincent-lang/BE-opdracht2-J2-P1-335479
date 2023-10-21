@@ -86,4 +86,14 @@ class gegevensController extends Controller
 
         return redirect(route('instructeur.list', [$instructeurId]));
     }
+
+    public function delete(Instructeur $instructeur, $row)
+    {
+        $instructeurId = $instructeur->Id;
+        $voertuigId = $row;
+
+        DB::table('voertuig_instructeurs')->where('VoertuigId', $row)->delete();
+
+        return redirect(route('instructeur.list', [$instructeurId]))->with('succes', 'Het door u geselecteerde voertuig is verwijderd');
+    }
 }

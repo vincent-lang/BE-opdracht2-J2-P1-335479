@@ -16,6 +16,20 @@
     <h3>
         <a href="{{route('instructeur.addPage', [$instructeurs[0]->Id])}}">Toevoegen voertuig</a>
     </h3>
+    <div>
+        @if(session()->has('succes'))
+        <div>
+            <h3 class="succes-text">
+                {{session('succes')}}
+            </h3>
+        </div>
+        <script>
+            setTimeout(function() {
+                window.location.href = "{{route('instructeur.list', [$instructeurs[0]->Id])}}"
+            }, 3000);
+        </script>
+        @endif
+    </div>
     @if($voertuigData->isEmpty())
     <h3>Geen voertuigen toegewezen.</h3>
     <script>
@@ -33,6 +47,7 @@
             <th>Brandstof</th>
             <th>Rijbewijs categorie</th>
             <th>Wijzigen</th>
+            <th>Verwijderen</th>
         </thead>
         <tbody>
             @foreach ($voertuigData as $row)
@@ -46,6 +61,11 @@
                 <td>
                     <a href="{{route('instructeur.editPage', [$instructeurs[0]->Id, $row->Id])}}">
                         <img class="small-img" src="/img/wijzig.png" alt="wijzig.png">
+                    </a>
+                </td>
+                <td>
+                    <a href="{{route('instructeur.delete', [$instructeurs[0]->Id, $row->Id])}}">
+                        <img class="small-img" src="/img/delete.png" alt="delete.png">
                     </a>
                 </td>
             </tr>

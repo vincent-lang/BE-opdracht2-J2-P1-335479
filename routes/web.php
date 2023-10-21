@@ -25,3 +25,5 @@ Route::get('/instructeur/{instructeur}/{row}/add', [gegevensController::class, '
 Route::get('/instructeur/{instructeur}/{row}/editPage', [gegevensController::class, 'edit'])->name('instructeur.editPage');
 
 Route::put('/instructeur/{instructeur}/{row}/update', [gegevensController::class, 'update'])->name('instructeur.update');
+
+Route::get('/instructeur/{instructeur}/{row}/delete', [gegevensController::class, 'delete'])->name('instructeur.delete');

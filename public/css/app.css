@@ -91,3 +91,7 @@ form.wijzig>div.wijzig {
 img.small-img {
     width: 20%;
 }
+
+h3.succes-text {
+    color: red;
+}
